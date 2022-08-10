@@ -7,6 +7,8 @@ class Dinosaur(Sprite):
     X_POS = 80
     Y_POS = 310
     Y_POS_DUCK = 340
+    JUMP_VEL = 8.5
+
 
     def __init__(self):
         self.image = RUNNING [0]
@@ -16,12 +18,14 @@ class Dinosaur(Sprite):
         self.step_index = 0
         self.dino_run = True
         self.dino_duck = False
+        self.dino_jump = False
+        self.jump_vel = self.JUMP_VEL
 
     def update(self, user_input):
         if self.dino_duck:
             self.duck()
 
-        if self.dino_run():
+        if self.dino_run:
             self.run()
         
         if self.dino_jump:
@@ -72,5 +76,5 @@ class Dinosaur(Sprite):
 
 
     def draw(self, screen):
-        screen.blit(self, image, (self.dino_rect.x, self.dino_rect.y))
+        screen.blit(self.image, (self.dino_rect.x, self.dino_rect.y))
 
