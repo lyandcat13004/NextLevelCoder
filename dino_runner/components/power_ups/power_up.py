@@ -1,5 +1,3 @@
-from email.mime import image
-
 
 import random
 from pygame.sprite import Sprite

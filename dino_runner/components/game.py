@@ -1,10 +1,9 @@
 import pygame
-from dino_runner.components.power_ups.power_up_manager import PowerUpManager
 
 from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS
 from dino_runner.components.dinosaur import Dinosaur
 from dino_runner.components.obstacles.obstacle_manager import ObstacleManager
-from dino_runner.components.power_ups.power_up import PowerUpManager
+from dino_runner.components.power_ups.power_up_manager import PowerUpManager
 class Game:
     def __init__(self):
         pygame.init()
@@ -19,7 +18,7 @@ class Game:
         self.player = Dinosaur()
         self.obstacle_manager = ObstacleManager()
         self.points = 0
-        self.power_up_manager = PowerUpManager
+        self.power_up_manager = PowerUpManager()
 
     def run(self):
         # Game loop: events - update - draw
@@ -32,7 +31,8 @@ class Game:
         pygame.quit()
 
     def create_components(self):
-        self.power_up_manager.reset_power_up()
+        self.power_up_manager.reset_power_ups(self.points)
+
     def events(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:

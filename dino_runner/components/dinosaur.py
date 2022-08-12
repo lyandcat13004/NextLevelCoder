@@ -1,7 +1,7 @@
 from email.mime import image
 import pygame
-from dino_runner.utils.constants import JUMPING, RUNNING, DUCKING, DEFAULT_TYPE, DUCKING_SHIELD,RUNNING_SHIELD, JUMPING_SHIELD, SHIELD_TYPE
 from pygame.sprite import Sprite
+from dino_runner.utils.constants import JUMPING, RUNNING, DUCKING, DEFAULT_TYPE, SHIELD_TYPE, DUCKING_SHIELD,RUNNING_SHIELD, JUMPING_SHIELD
 
 class Dinosaur(Sprite):
     X_POS = 80
@@ -75,7 +75,7 @@ class Dinosaur(Sprite):
         self.step_index += 1
 
     def jump(self):
-        self.image = self.duck_image[self.type]
+        self.image = self.jump_image[self.type]
         ##self.image = JUMPING
         if self.dino_jump:
             self.dino_rect.y -= self.jump_vel * 4
@@ -104,7 +104,7 @@ class Dinosaur(Sprite):
 
             else:
                 self.shield = False
-                self.uodate_to_default(SHIELD_TYPE)
+                self.update_to_default(SHIELD_TYPE)
     
     def update_to_default(self, current_type):
         if self.type == current_type:
