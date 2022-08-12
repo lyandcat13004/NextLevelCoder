@@ -64,6 +64,9 @@ class Game:
             self.x_pos_bg = 0
         self.x_pos_bg -= self.game_speed
 
+    ##def draw_cloud(self):
+       ##self.screen.blit(self.image, (self.x, self.y))
+
     def score(self):
         self.points += 1
         if self.points % 100 == 0:
